@@ -1,0 +1,133 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: #242424;
+}
+
+.slider-container {
+  width: min-content;
+  height: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+
+.slider {
+  width: 900px;
+  aspect-ratio: 14/5;
+  margin: 0 auto;
+  display: flex;
+  overflow: hidden;
+}
+
+.slider-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+  flex-shrink: 0;
+  flex-grow: 0;
+  transition: translate 0.3s ease-in-out;
+}
+
+.slider-button {
+  all: unset;
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.slider-button:hover {
+  background-color: rgb(0, 0, 0);
+}
+
+.slider-dots-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  height: 50px;
+  gap: 0.8rem;
+  padding: 1rem;
+}
+
+.slider-dot {
+  all: unset;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  border: 1px solid gray;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.slider-dot:hover {
+  background-color: rgb(0, 0, 0);
+}
+
+.slider-dot-active {
+  all: unset;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.329);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.spinner {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+.popup button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #555;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.popup button:hover {
+  background-color: #777;
+}
