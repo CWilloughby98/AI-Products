@@ -46,7 +46,7 @@ def search_products():
             ]
 
         category_completion = client.chat.completions.create(
-            model="gpt-4o-mini",  # or the correct model name
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "You are an AI that takes a category array and returns ONLY a new array with a maximum of 3 of only categories related or similar to the search query, taking in account that plural words are will be the same as the singular word. (that array needs to be composed only of the category slugs). For example, if the user searches for 'shirts', the categories might be ['shirts', 'tops', 'clothing']. Or if the user searches for 'bananas', the categories might be ['groceries', 'fruits', 'food']."},
                 {"role": "user", "content": f"These are the categories: {category_data}. The search query is: {search_query}."}
@@ -58,7 +58,6 @@ def search_products():
         related_categories = json.loads(category_completion.choices[0].message.tool_calls[0].function.arguments)['related_categories']
         print("HERE IS THE RELATED CATEGORIES", related_categories)
 
-        #create a new request for each category in the related_categories array to the dummyjson API to get products from the related categories and store them in a new array
         products_from_related_categories = []
         for category in related_categories:
             response = requests.get(f"https://dummyjson.com/products/category/{category}")
@@ -97,7 +96,7 @@ def search_products():
                 }
             ]
 
-        # Create a new gpt-4o-mini request to filter and return a new array with only 8 products from the products_from_related_categories array that it belives adjusts more to the search query  
+        
         ai_generated_search = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
